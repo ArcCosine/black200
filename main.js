@@ -1,4 +1,4 @@
-import './style.css'
+import './style.css';
 
 const shuffle = ([...array]) => {
     for (let i = array.length - 1; i > 0; i--) {
@@ -9,11 +9,10 @@ const shuffle = ([...array]) => {
 }
 
 function ColorToHex(color) {
-    const hexadecimal = color.toString(16);
-    return ("00" + hexadecimal).slice(-2);
+    return color.toString(16).padStart(2,"0");
 }
 function ConvertRGBtoHex(col) {
-    return ColorToHex(col[0]) + ColorToHex(col[1]) + ColorToHex(col[2]);
+    return `${ColorToHex(+col[0])}${ColorToHex(+col[1])}${ColorToHex(+col[2])}`;
 }
 
 let ac_color = [255, 255, 255];
@@ -25,8 +24,8 @@ let score_num = 0;
 let enable_submit = 0;
 
 function update_score(){
-    document.getElementById('try').innerHTML = "Try: " + try_num;
-    document.getElementById('score').innerHTML = "Score: " + score_num;
+    document.getElementById('try').textContent = try_num;
+    document.getElementById('score').textContent = score_num;
 }
 
 function submit(r, g, b) {
@@ -57,7 +56,7 @@ function submit(r, g, b) {
             comment = "| 一発で黒を見つけられました！"
             comment2 = "一発で黒を見つけられた！"
         } else if(time <= 10000) {
-            comment = "| 素早くで黒を見つけられました！"
+            comment = "| 素早く黒を見つけられました！"
             comment2 = "素早く黒を見つけられた！"
         }
 
@@ -86,13 +85,8 @@ function submit(r, g, b) {
 function update_timer(){
     if (!enable_submit) return;
 
-    let now_time = new Date();
-    let diff = now_time.getTime() - start_time.getTime();
-
-    const time_elem = document.getElementById('time');
-    time_elem.innerHTML = "Time<br>" + 
-        Math.floor(diff/1000) + "." + 
-        ("0"+Math.floor(diff/10)%100).slice(-2);
+    let diff = Date.now() - start_time.getTime();
+    document.getElementById('timer').textContent = `${Math.floor(diff/1000)}.${(""+Math.floor(diff/10)%100).padStart(2,"0")}`;
     setTimeout(update_timer, 30);
     return diff;
 }
@@ -114,7 +108,6 @@ function make_problem(num, dif){
         }
     }
     list = shuffle(list);
-    let html = "";
     const fragment = document.createDocumentFragment();
     for(let i = 0; i < num; ++i) {
         let col_hex = ConvertRGBtoHex(list[i]);
@@ -129,8 +122,8 @@ function make_problem(num, dif){
     alt.appendChild(fragment);
     ac_color = list[Math.floor(Math.random() * num)];
     ac_color_hex = ConvertRGBtoHex(ac_color);
-    const problem_text = document.getElementById('problem_text');
-    problem_text.innerHTML = "この黒を探せ！<br>#" + ac_color_hex;
+    const problem_hex_elem = document.getElementById('problem_hex');
+    problem_hex_elem.textContent = ac_color_hex;
     const problem_color_box = document.getElementById('problem_color_box');
     problem_color_box.style.setProperty('background-color', "#" + ac_color_hex);
 
@@ -147,8 +140,8 @@ function make_problem(num, dif){
 }
 
 function postTwitter(){
-    const twitterUrl = document.getElementById('tw_share').href;
-    window.open(encodeURI(decodeURI(twitterUrl)), 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1');
+    const twitter_url = document.getElementById('tw_share').href;
+    window.open(encodeURI(decodeURI(twitter_url)), 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1');
 }
 
 

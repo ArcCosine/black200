@@ -20,13 +20,15 @@ header {
   box-shadow: 0 1px 5px 2px rgba(0, 0, 0, 0.15);
   color: #fff;
 }
+
 main {
+  margin: 0;
+  padding: 0;
 }
 
 .start_btn {
   width: 200px;
   height: 120px;
-  float: left;
   font-size: 200%;
   margin: 2px;
   border: solid;
@@ -75,14 +77,18 @@ main {
   line-height: 30px;
 }
 
+#list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .alternatives {
   width: 75px;
   height: 50px;
-  float: left;
   margin: 2px;
   border: solid;
   border-width: 2px;
-  border-color: #aeaeaeae;
+  border-color: #ffffff;
   border-radius: 8px;
   cursor: pointer;
 }
@@ -91,13 +97,13 @@ main {
   width: 120px;
   height: 50px;
   position: absolute;
-  background-color: #323232;
+  background-color: #f8f8f8;
   top: -60%;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 8px;
   text-align: center;
-  color: #ffffff;
+  color: #000;
 }
 
 #hazure_text {
@@ -105,11 +111,11 @@ main {
 }
 
 .hazure_anim {
-  animation: key1 0.9s ease alternate;
+  animation: dropdown 0.9s ease alternate;
   animation-fill-mode: forwards;
 }
 
-@keyframes key1 {
+@keyframes dropdown {
   0% {
     transform: translate(-50%, -60%);
   }
@@ -130,7 +136,7 @@ main {
 }
 
 .score_box {
-  width: 120px;
+  width: 140px;
 }
 
 .point_time_text {
@@ -145,7 +151,6 @@ main {
 #modal_ac {
   width: 400px;
   height: 400px;
-  float: left;
   font-size: 200%;
   margin: 2px;
   border: solid;
@@ -199,5 +204,11 @@ main {
 @media screen and (max-width: 500px) {
   .none {
     display: none;
+  }
+  header {
+    padding: 8px 0px 8px 20px;
+  }
+  #problem_text {
+    font-size: 70%;
   }
 }
