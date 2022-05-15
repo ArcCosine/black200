@@ -85,7 +85,7 @@ function submit(r, g, b) {
 function update_timer(){
     if (!enable_submit) return;
 
-    let diff = Date.now() - start_time.getTime();
+    let diff = Date.now() - start_time;
     document.getElementById('timer').textContent = `${Math.floor(diff/1000)}.${(""+Math.floor(diff/10)%100).padStart(2,"0")}`;
     setTimeout(update_timer, 30);
     return diff;
@@ -118,23 +118,18 @@ function make_problem(num, dif){
         div.style.backgroundColor = `#${col_hex}`; 
         fragment.appendChild(div);
     }
-    alt.innerHTML="";
     alt.appendChild(fragment);
     ac_color = list[Math.floor(Math.random() * num)];
     ac_color_hex = ConvertRGBtoHex(ac_color);
-    const problem_hex_elem = document.getElementById('problem_hex');
-    problem_hex_elem.textContent = ac_color_hex;
-    const problem_color_box = document.getElementById('problem_color_box');
-    problem_color_box.style.setProperty('background-color', "#" + ac_color_hex);
-
-    
+    document.getElementById('problem_hex').textContent = ac_color_hex;
+    document.getElementById('problem_color_box').style.setProperty('background-color', "#" + ac_color_hex);
     document.getElementById('modal_ac').style.visibility ="hidden";
 
     score_num = (dif === 1) ? 1000 : 100;
     try_num = 0;
     update_score();
 
-    start_time = new Date();
+    start_time = Date.now();
     enable_submit = true;
     update_timer();
 }
@@ -147,16 +142,10 @@ function postTwitter(){
 
 function init(){
     // Tutorial
-    document.getElementById('start_btn').addEventListener('click', function(){
-        make_problem(200,8);
-    }, false );
-
+    document.getElementById('start_btn').addEventListener('click', make_problem.bind(this,200,8), false );
 
     //production
-    document.getElementById('start_pro').addEventListener('click', function(){
-        make_problem(200,1);
-    }, false );
-
+    document.getElementById('start_pro').addEventListener('click', make_problem.bind(this,200,1), false );
 
     // Share Twitter
     document.getElementById('tw_share').addEventListener('click', postTwitter, false );
