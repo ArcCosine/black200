@@ -48,9 +48,9 @@ function get_message(id){
             "en" : ["Found black within 10!","Found black within 10!"]
         }
     }
+    const lang = window.navigator.language.substr(0,2) === 'ja' ? 'ja' : 'en';
 
     if( typeof messages[id] !== 'undefined' ){
-        const lang = 'ja';
         return {
             twitter: messages[id][lang][0],
             view: messages[id][lang][0]

@@ -1,57 +1,76 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
+    />
     <title>200色の黒から見つけよう！ - Black 200</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <div id="problem">
-            <p id="p1" class="text_cat">Black 200</p>
-        </div>
-        <div id="problem_text">
-          <p id="p1" class="text_cat">この黒を探せ！<br>#<span id="problem_hex">xxxxxx</span></p>
-        </div>
-        <div id="problem_color_box"></div>
+      <div id="problem">
+        <p id="p1" class="text_cat">Black 200</p>
+      </div>
+      <div id="problem_text">
+        <p id="p1" class="text_cat">
+          この黒を探せ！<br />#<span id="problem_hex">xxxxxx</span>
+        </p>
+      </div>
+      <div id="problem_color_box"></div>
 
-        <div class="timer_box">
-          <p class="point_time_text" id="time">Time<br><span id="timer">00.00</span></p>
-        </div>
-        <div class="score_box">
-          <p class="point_time_text">Score:<span id="score">0</span></p>
-          <p class="point_time_text">Try:<span id="try">0</span></p>
-        </div>
+      <div class="timer_box">
+        <p class="point_time_text" id="time">
+          Time<br /><span id="timer">00.00</span>
+        </p>
+      </div>
+      <div class="score_box">
+        <p class="point_time_text">Score:<span id="score">0</span></p>
+        <p class="point_time_text">Try:<span id="try">0</span></p>
+      </div>
 
-        <div class="none">
-            <a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false" data-hashtags="black_200" data-related="ArcCosine">Tweet</a>
-            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-        </div>
+      <div class="none">
+        <a
+          href="https://twitter.com/share"
+          class="twitter-share-button"
+          data-show-count="false"
+          data-hashtags="black_200"
+          data-related="ArcCosine"
+          >Tweet</a
+        >
+        <script
+          async
+          src="https://platform.twitter.com/widgets.js"
+          charset="utf-8"
+        ></script>
+      </div>
 
-        <div id="modal_hazure">
-            <p id="hazure_text">はずれ<br>#xxxxxx</p>
-        </div>
-        <button id="start_btn" class="start_btn">
-            スタート！
+      <div id="modal_hazure">
+        <p id="hazure_text">はずれ<br />#xxxxxx</p>
+      </div>
+      <button id="start_btn" class="start_btn">スタート！</button>
+      <div id="modal_ac">
+        <p class="ac_text">正解！</p>
+        <p class="ac_text" id="ac_scores">Score:0<br />Try:0<br />Time:0</p>
+        <p class="ac_text" id="ac_tweet">
+          <a
+            id="tw_share"
+            href="http://twitter.com/share"
+            target="_blank"
+            rel="noopener"
+            >結果をツイート</a
+          >
+        </p>
+        <p class="ac_text" id="ac_comment">チュートリアル終了！</p>
+        <button class="start_btn" id="start_pro" onclick="make_problem(200, 1)">
+          本番開始！
         </button>
-        <div id="modal_ac">
-            <p class="ac_text">正解！</p>
-            <p class="ac_text" id="ac_scores">Score:0<br>Try:0<br>Time:0</p>
-            <p class="ac_text" id="ac_tweet">
-            <a id="tw_share" href="http://twitter.com/share" target="_blank" rel="noopener"> 
-                    結果をツイート
-                </a>
-            </p>
-            <p class="ac_text" id="ac_comment">チュートリアル終了！</p>
-            <button class="start_btn" id="start_pro" onclick="make_problem(200, 1)">
-                本番開始！
-            </button>
-        </div>
+      </div>
     </header>
     <main>
-        <div id="list">
-        </div>
+      <div id="list"></div>
     </main>
     <script type="module" src="./main.js"></script>
-</body>
+  </body>
 </html>
